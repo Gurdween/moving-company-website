@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftMove Solutions - Professional Moving Services</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#1E3D59',secondary:'#FF6B35'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=professional%20movers%20carrying%20boxes%2C%20moving%20a%20family%20into%20a%20new%20home%2C%20bright%20natural%20lighting%2C%20clean%20modern%20home%20interior%2C%20professional%20service%2C%20high%20quality%20photography%2C%20soft%20natural%20colors&width=1920&height=1080&seq=1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #1E3D59;
+            border-radius: 4px;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #1E3D59;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .map-container {
+            background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-10 h-10 flex items-center justify-center bg-primary rounded-full">
+                    <div class="text-white font-['Pacifico'] text-xl">S</div>
+                </div>
+                <span class="text-primary font-semibold text-xl">SwiftMove</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-gray-700 hover:text-primary font-medium">Home</a>
+                <a href="#services" class="text-gray-700 hover:text-primary font-medium">Services</a>
+                <a href="#about" class="text-gray-700 hover:text-primary font-medium">About Us</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium">Testimonials</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex items-center gap-4">
+                <a href="#quote" class="hidden md:block bg-secondary text-white px-5 py-2 font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Get a Quote</a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="menuButton" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-4 flex flex-col gap-4">
+                <a href="#home" class="text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100">Home</a>
+                <a href="#services" class="text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100">Services</a>
+                <a href="#about" class="text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100">About Us</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100">Testimonials</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100">Contact</a>
+                <a href="#quote" class="bg-secondary text-white px-5 py-2 text-center font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-20 w-full">
+            <div class="max-w-2xl text-white">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Your Smooth Move Starts Here</h1>
+                <p class="text-lg md:text-xl mb-8">Professional moving services tailored to your needs. We handle the heavy lifting so you can focus on your new beginning.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#quote" class="bg-secondary text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Free Quote</a>
+                    <a href="#services" class="bg-white text-primary px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-gray-100 transition-all">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Moving Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer comprehensive moving solutions to meet all your relocation needs, whether you're moving across the street or across the country.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
+                        <i class="ri-home-4-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Residential Moving</h3>
+                    <p class="text-gray-600 mb-4">We handle all aspects of your home move with care and precision. From packing and loading to transportation and unpacking, we ensure your belongings arrive safely.</p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-1 hover:underline">
+                        Learn More <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
+                        <i class="ri-building-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Commercial Moving</h3>
+                    <p class="text-gray-600 mb-4">Minimize downtime with our efficient business relocation services. We coordinate every detail to ensure your office move is completed on schedule with minimal disruption.</p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-1 hover:underline">
+                        Learn More <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
+                        <i class="ri-box-3-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Packing Services</h3>
+                    <p class="text-gray-600 mb-4">Our professional packers use quality materials and techniques to protect your belongings. From fragile items to bulky furniture, we ensure everything is properly secured.</p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-1 hover:underline">
+                        Learn More <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
+                        <i class="ri-archive-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Storage Solutions</h3>
+                    <p class="text-gray-600 mb-4">Need temporary storage during your move? Our secure, climate-controlled facilities keep your belongings safe until you're ready for them in your new space.</p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-1 hover:underline">
+                        Learn More <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About SwiftMove Solutions</h2>
+                    <p class="text-gray-600 mb-6">Founded in 2015, SwiftMove Solutions has been helping families and businesses relocate with ease and confidence. Our mission is to provide stress-free moving experiences through exceptional service and attention to detail.</p>
+                    <p class="text-gray-600 mb-8">We understand that moving is more than just transporting items—it's about transitioning to a new chapter in life. Our team of experienced professionals is committed to making this transition as smooth as possible.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                                <i class="ri-calendar-check-line ri-lg text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">10+ Years</h4>
+                                <p class="text-sm text-gray-500">In Business</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                                <i class="ri-truck-line ri-lg text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">15,000+</h4>
+                                <p class="text-sm text-gray-500">Moves Completed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                                <i class="ri-team-line ri-lg text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">50+</h4>
+                                <p class="text-sm text-gray-500">Team Members</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                                <i class="ri-star-line ri-lg text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">4.9/5</h4>
+                                <p class="text-sm text-gray-500">Customer Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20moving%20team%20in%20blue%20uniforms%20standing%20in%20front%20of%20a%20moving%20truck%2C%20diverse%20group%20of%20movers%2C%20friendly%20and%20professional%20appearance%2C%20clean%20modern%20moving%20truck%20with%20company%20branding%2C%20sunny%20day%2C%20high%20quality%20professional%20photography&width=600&height=600&seq=2&orientation=squarish" alt="SwiftMove Team" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our satisfied customers have to say about their moving experience with SwiftMove Solutions.</p>
+            </div>
+            
+            <div id="testimonialSlider" class="relative">
+                <div class="flex overflow-x-hidden" id="testimonialContainer">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card min-w-full md:min-w-[33.333%] px-4">
+                        <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 mb-6">"The SwiftMove team was absolutely incredible! They handled our cross-country move with such care and professionalism. Everything arrived intact and on time. I couldn't have asked for a better moving experience."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20woman%20with%20short%20brown%20hair%2C%20friendly%20smile%2C%20neutral%20background%2C%20professional%20appearance&width=100&height=100&seq=3&orientation=squarish" alt="Customer" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Rebecca Anderson</h4>
+                                    <p class="text-sm text-gray-500">Residential Move</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card min-w-full md:min-w-[33.333%] px-4">
+                        <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 mb-6">"As a business owner, I needed a moving company that could relocate our office with minimal downtime. SwiftMove delivered beyond expectations. They were efficient, organized, and had us up and running in our new location in record time."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20man%20with%20glasses%2C%20business%20attire%2C%20confident%20expression%2C%20neutral%20background%2C%20professional%20appearance&width=100&height=100&seq=4&orientation=squarish" alt="Customer" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Michael Richardson</h4>
+                                    <p class="text-sm text-gray-500">Commercial Move</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card min-w-full md:min-w-[33.333%] px-4">
+                        <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-half-fill text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 mb-6">"I was dreading the packing process for our move, but SwiftMove's packing service was a lifesaver! Their team was so thorough and careful with all our belongings, especially our antique furniture. Worth every penny!"</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20couple%2C%20diverse%20ethnicities%2C%20friendly%20smiles%2C%20casual%20but%20neat%20appearance%2C%20neutral%20background&width=100&height=100&seq=5&orientation=squarish" alt="Customer" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">James & Emily Chen</h4>
+                                    <p class="text-sm text-gray-500">Packing Services</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div class="flex justify-center mt-8 gap-2">
+                    <button class="w-3 h-3 rounded-full bg-primary" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section id="quote" class="py-20 bg-primary bg-opacity-5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get Your Free Moving Quote</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Fill out the form below to receive a free, no-obligation quote for your upcoming move. We'll get back to you within 24 hours.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <form id="quoteForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" placeholder="John Smith">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" placeholder="(555) 123-4567">
+                        </div>
+                        <div>
+                            <label for="moveDate" class="block text-gray-700 font-medium mb-2">Preferred Move Date</label>
+                            <input type="date" id="moveDate" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Move Type</label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="moveType" class="hidden">
+                                <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+                                    <span class="w-3 h-3 rounded-full bg-primary hidden radio-selected"></span>
+                                </span>
+                                <span>Residential</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="moveType" class="hidden">
+                                <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+                                    <span class="w-3 h-3 rounded-full bg-primary hidden radio-selected"></span>
+                                </span>
+                                <span>Commercial</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="moveType" class="hidden">
+                                <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+                                    <span class="w-3 h-3 rounded-full bg-primary hidden radio-selected"></span>
+                                </span>
+                                <span>Long Distance</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Services Needed</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="custom-checkbox flex items-center gap-2 pl-7 relative">
+                                <input type="checkbox" class="service-checkbox">
+                                <span class="checkmark"></span>
+                                <span>Full-Service Moving</span>
+                            </label>
+                            <label class="custom-checkbox flex items-center gap-2 pl-7 relative">
+                                <input type="checkbox" class="service-checkbox">
+                                <span class="checkmark"></span>
+                                <span>Packing & Unpacking</span>
+                            </label>
+                            <label class="custom-checkbox flex items-center gap-2 pl-7 relative">
+                                <input type="checkbox" class="service-checkbox">
+                                <span class="checkmark"></span>
+                                <span>Storage Solutions</span>
+                            </label>
+                            <label class="custom-checkbox flex items-center gap-2 pl-7 relative">
+                                <input type="checkbox" class="service-checkbox">
+                                <span class="checkmark"></span>
+                                <span>Furniture Assembly</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="details" class="block text-gray-700 font-medium mb-2">Move Details</label>
+                        <textarea id="details" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Please provide any additional details about your move..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="bg-secondary text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all w-full md:w-auto">Submit Quote Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or need more information? Reach out to our friendly team. We're here to help with all your moving needs.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-md p-8 h-full">
+                        <h3 class="text-2xl font-semibold mb-6">Get In Touch</h3>
+                        
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Our Location</h4>
+                                <p class="text-gray-600">1234 Moving Avenue, Suite 500<br>Boston, MA 02110</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+                                <i class="ri-phone-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Phone Number</h4>
+                                <p class="text-gray-600">(617) 555-7890</p>
+                                <p class="text-gray-600">Toll-free: 1-800-SWIFTMOVE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+                                <i class="ri-mail-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email Address</h4>
+                                <p class="text-gray-600">info@swiftmovesolutions.com</p>
+                                <p class="text-gray-600">support@swiftmovesolutions.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+                                <i class="ri-time-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Business Hours</h4>
+                                <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                <p class="text-gray-600">Saturday: 9:00 AM - 3:00 PM</p>
+                                <p class="text-gray-600">Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="h-full">
+                        <div class="map-container w-full h-full min-h-[400px] rounded-lg shadow-md"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                            <div class="text-primary font-['Pacifico'] text-xl">S</div>
+                        </div>
+                        <span class="text-white font-semibold text-xl">SwiftMove</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">Professional moving services for residential and commercial clients. Making your move smooth and stress-free since 2015.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                            <i class="ri-facebook-fill text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                            <i class="ri-twitter-x-fill text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                            <i class="ri-instagram-line text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                            <i class="ri-linkedin-fill text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-all">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition-all">Services</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-all">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-300 hover:text-white transition-all">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-all">Contact</a></li>
+                        <li><a href="#quote" class="text-gray-300 hover:text-white transition-all">Get a Quote</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-all">Residential Moving</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-all">Commercial Moving</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-all">Packing & Unpacking</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-all">Storage Solutions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-all">Long Distance Moving</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-all">Specialty Item Moving</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Subscribe to our newsletter for moving tips and exclusive offers.</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l border-none focus:outline-none text-gray-800 w-full">
+                            <button type="submit" class="bg-secondary text-white px-4 py-3 rounded-r whitespace-nowrap hover:bg-opacity-90 transition-all">Subscribe</button>
+                        </div>
+                    </form>
+                    <div class="flex items-center gap-4">
+                        <p class="text-gray-300">We Accept:</p>
+                        <div class="flex gap-2">
+                            <i class="ri-visa-fill ri-lg"></i>
+                            <i class="ri-mastercard-fill ri-lg"></i>
+                            <i class="ri-paypal-fill ri-lg"></i>
+                            <i class="ri-american-express-fill ri-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 SwiftMove Solutions. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-all">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-all">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-all">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Call Button -->
+    <div class="md:hidden fixed bottom-6 right-6 z-40">
+        <a href="tel:(617)555-7890" class="bg-secondary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+            <i class="ri-phone-fill ri-lg"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script id="mobileMenuScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('menuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Toggle menu icon
+                const icon = menuButton.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('ri-close-line');
+                    icon.classList.add('ri-menu-line');
+                } else {
+                    icon.classList.remove('ri-menu-line');
+                    icon.classList.add('ri-close-line');
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuButton.querySelector('i');
+                    icon.classList.remove('ri-close-line');
+                    icon.classList.add('ri-menu-line');
+                });
+            });
+        });
+    </script>
+
+    <script id="testimonialSliderScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('testimonialContainer');
+            const dots = document.querySelectorAll('[data-index]');
+            let currentIndex = 0;
+            
+            // Set up dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    showSlide(index);
+                });
+            });
+            
+            function showSlide(index) {
+                // Update current index
+                currentIndex = index;
+                
+                // Calculate translation
+                const slideWidth = document.querySelector('.testimonial-card').offsetWidth;
+                container.style.transition = 'transform 0.5s ease';
+                container.style.transform = `translateX(-${slideWidth * index}px)`;
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.remove('bg-gray-300');
+                        dot.classList.add('bg-primary');
+                    } else {
+                        dot.classList.remove('bg-primary');
+                        dot.classList.add('bg-gray-300');
+                    }
+                });
+            }
+            
+            // Auto-scroll
+            let interval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % dots.length;
+                showSlide(currentIndex);
+            }, 5000);
+            
+            // Pause on hover
+            container.addEventListener('mouseenter', () => {
+                clearInterval(interval);
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                interval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % dots.length;
+                    showSlide(currentIndex);
+                }, 5000);
+            });
+            
+            // Initial setup
+            showSlide(0);
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                showSlide(currentIndex);
+            });
+        });
+    </script>
+    <script id="formControlsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Radio buttons
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    // Hide all selected indicators
+                    document.querySelectorAll('.radio-selected').forEach(el => {
+                        el.classList.add('hidden');
+                    });
+                    
+                    // Show the selected indicator for this radio
+                    if (this.checked) {
+                        const selectedIndicator = this.nextElementSibling.querySelector('.radio-selected');
+                        selectedIndicator.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Form submission
+            const quoteForm = document.getElementById('quoteForm');
+            if (quoteForm) {
+                quoteForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your quote request! Our team will contact you within 24 hours.');
+                    quoteForm.reset();
+                });
+            }
+        });
+    </script>
+
+    <script id="smoothScrollScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
